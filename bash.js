@@ -14,16 +14,21 @@ process.stdin.on('data', (data) => {
   if (cmd === 'ls') return ls();
   if (cmd.slice(0, 3) === 'cat') {
     const filename = cmd.slice(4).toString();
-    
+
     return cat(filename);
   }
 
   if (cmd.slice(0, 4) === 'curl') {
     const website = cmd.slice(5).toString();
-    
+
     return curl(website);
   }
 
   process.stdout.write('You typed: ' + cmd);
   process.stdout.write('\nprompt > ');
 });
+
+module.exports.done = (output) => {
+  process.stdout.write(output);
+  process.stdout.write('\nprompt > ');
+};

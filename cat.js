@@ -1,12 +1,12 @@
 const fs = require('fs');
+const bash = require('./bash');
 
 module.exports = (filename) => {
   fs.readFile(filename, 'utf-8', (err, data) => {
     if (err) {
-      throw err;
+      bash.done('Something went wrong!');
     } else {
-      process.stdout.write(data);
-      process.stdout.write('\nprompt > ');
+      bash.done(data);
     }
   });
 };
