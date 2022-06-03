@@ -1,7 +1,4 @@
-const pwd = require('./commands/pwd');
-const ls = require('./commands/ls');
-const cat = require('./commands/cat');
-const curl = require('./commands/curl');
+import { pwd, ls, cat, curl, date } from './commands/index.js';
 
 const done = (output) => {
   process.stdout.write(output);
@@ -28,6 +25,9 @@ process.stdin.on('data', (data) => {
 
     return curl(website, done);
   }
+
+  if (cmd === 'date') return date(done);
+
 
   process.stdout.write('You typed: ' + cmd);
   process.stdout.write('\nprompt > ');

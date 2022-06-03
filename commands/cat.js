@@ -1,6 +1,6 @@
-const fs = require('fs');
+import * as fs from 'node:fs';
 
-module.exports = (filename, done) => {
+const cat = (filename, done) => {
   fs.readFile(filename, 'utf-8', (err, data) => {
     if (err) {
       done('Something went wrong!');
@@ -9,3 +9,5 @@ module.exports = (filename, done) => {
     }
   });
 };
+
+export default cat;

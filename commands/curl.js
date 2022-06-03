@@ -1,9 +1,11 @@
-const request = require('request');
+import request from 'request';
 
-module.exports = (website, done) => {
+const curl = (website, done) => {
   request(`https://${website}`, (error, response, body) => {
-    console.error('error:', error); 
-    console.log('statusCode:', response && response.statusCode); 
-    done(body); 
+    console.error('error:', error);
+    console.log('statusCode:', response && response.statusCode);
+    done(body);
   });
 };
+
+export default curl;
