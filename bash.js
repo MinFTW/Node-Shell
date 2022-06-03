@@ -1,4 +1,4 @@
-import { pwd, ls, cat, curl, date } from './commands/index.js';
+import { pwd, ls, cat, curl, date, echo } from './commands/index.js';
 
 const done = (output) => {
   process.stdout.write(output);
@@ -28,6 +28,11 @@ process.stdin.on('data', (data) => {
 
   if (cmd === 'date') return date(done);
 
+  if (cmd.slice(0, 4) === 'echo') {
+    const string = cmd.slice(5).toString();
+
+    return echo(string, done);
+  }
 
   process.stdout.write('You typed: ' + cmd);
   process.stdout.write('\nprompt > ');
